@@ -32,6 +32,8 @@ import tensorflow as tf
 import modeling
 import tokenization
 
+NIET IN CODE ANDERE SEMINAR, UITLEG OVER WAT TE DOWNLOADEN 
+DUIDELIJKER INSTRUCTIES IN CD-ABSC 
 assert 'COLAB_TPU_ADDR' in os.environ, 'ERROR: Not connected to a TPU runtime; please see the first cell in this notebook for instructions!'
 TPU_ADDRESS = 'grpc://' + os.environ['COLAB_TPU_ADDR']
 print('TPU address is', TPU_ADDRESS)
@@ -56,7 +58,9 @@ BERT_MODEL = 'uncased_L-12_H-768_A-12'  # @param {type:"string"}
 BERT_PRETRAINED_DIR = 'gs://cloud-tpu-checkpoints/bert/' + BERT_MODEL
 print('***** BERT pretrained directory: {} *****'.format(BERT_PRETRAINED_DIR))
 !gsutil
-ls $BERT_PRETRAINED_DIR
+
+VANAF HIER WEL 
+ls $BERT_PRETRAINED_DIR = PATH NOG INVULLEN 
 LAYERS = [-1, -2, -3, -4]
 NUM_TPU_CORES = 8
 MAX_SEQ_LENGTH = 87
@@ -358,13 +362,13 @@ def get_features(input_text, dim=768):
 
     return output
 
-
+ANDERS IN CD-ABSC 
 upload = files.upload()  # raw2016forBERT
 
 # When it takes too long, data can be split in multiple subfiles as in- and output, by changing line 343,344,368
-lines = open('raw_data2016.txt', errors='replace').readlines()
+lines = open('raw_data2016.txt', errors='replace').readlines() 
 with open('BERT_base.txt', 'w') as f:
-    for i in range(0 * 3, 2530 * 3, 3):  # len(lines)
+    for i in range(0 * 3, 2530 * 3, 3):  # len(lines) 
         print("sentence: " + str(i / 3) + " out of " + str(len(lines) / 3) + " in " + "raw_data;")
         target = lines[i + 1].lower().split()
         words = lines[i].lower().split()
@@ -388,4 +392,31 @@ with open('BERT_base.txt', 'w') as f:
                 f.write('%s ' % v)
 
 files.download('BERT_base.txt')
+
+WAT CD-ABSC HEEFT
+lines = open('dataBERT/raw_data_restaurant_2014.txt', errors='replace').readlines() DEZE LIJN IS VERANDERD
+with open("dataBERT/BERT_base_restaurant_2014.txt", 'w') as f:DEZE LIJN IS VERANDERD
+  for i in range(0, len(lines), 3):  # Was 0*3, 2530*3, 3 DEZE LIJN IS VERANDERD
+    print("sentence: " + str(i / 3) + " out of " + str(len(lines) / 3) + " in " + "raw_data;")
+    target = lines[i + 1].lower().split()
+    words = lines[i].lower().split()
+    words_l, words_r = [], []
+    flag = True
+    for word in words:
+      if word == '$t$':
+        flag = False
+        continue
+      if flag:
+        words_l.append(word)
+      else:
+        words_r.append(word)
+    sentence = " ".join(words_l + target + words_r)
+    print(sentence)
+    embeddings = get_features([sentence])
+
+    for key, value in embeddings.items():
+      f.write('\n%s ' % key)
+      for v in value:
+        f.write('%s ' % v)
+
 '''
