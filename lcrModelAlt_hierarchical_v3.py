@@ -11,7 +11,7 @@ from config import *
 from utils import load_w2v, batch_index, load_inputs_twitter
 import numpy as np
 
-tf.random.set_seed(1)
+tf.set_random_seed(1)
 
 def lcr_rot(input_fw, input_bw, sen_len_fw, sen_len_bw, target, sen_len_tr, keep_prob1, keep_prob2, l2, _id='all'):
     print('I am lcr_rot_alt.')

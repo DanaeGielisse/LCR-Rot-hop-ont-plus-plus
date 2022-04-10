@@ -40,17 +40,18 @@ def load_w2v(w2v_file, embedding_dim, is_skip=False):
         cnt += 1
         line = line.split()
         # line = line.split()
+        # when the length of a line is not the same as the embedding dimension, give error
         if len(line) != embedding_dim + 1:
             print('a bad word embedding: {}'.format(line[0]))
             continue
-        w2v.append([float(v) for v in line[1:]])
-        word_dict[line[0]] = cnt
-    w2v = np.asarray(w2v, dtype=np.float32)
-    w2v = np.row_stack((w2v, np.sum(w2v, axis=0) / cnt))
+        w2v.append([float(v) for v in line[1:]]) # append a word vector to w2v
+        word_dict[line[0]] = cnt # append (key, value) pairs as (word, number of occurance in the dictionary)
+    w2v = np.asarray(w2v, dtype=np.float32) # convert w2v to an array
+    w2v = np.row_stack((w2v, np.sum(w2v, axis=0) / cnt)) # Stack w2v array and sum of w2v in sequence vertically
     print(np.shape(w2v))
-    word_dict['$t$'] = (cnt + 1)
-    # w2v -= np.mean(w2v, axis=0)
-    # w2v /= np.std(w2v, axis=0)
+    word_dict['$t$'] = (cnt + 1) # append new (key,value) pair ($t$,last word number + 1)
+    w2v -= np.mean(w2v, axis=0) # substract the mean of w2v from all values in w2v
+    w2v /= np.std(w2v, axis=0) # devide all the values in w2v through the standard deviation of w2v
     print(word_dict['$t$'], len(w2v))
     return word_dict, w2v
 

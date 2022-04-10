@@ -3,13 +3,15 @@
 # https://github.com/pcgreat/mem_absa
 # https://github.com/NUSTM/ABSC
 
-import tensorflow as tf
+
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
 import cabascModel
 import lcrModel
 import lcrModelInverse
 import lcrModelAlt
 import svmModel
-from OntologyReasoner import OntReasoner
+#from OntologyReasoner import OntReasoner
 from loadData import *
 
 # import parameter configuration and data paths
@@ -29,7 +31,7 @@ import lcrModelAlt_hierarchical_v4
 def main(_):
     loadData = False  # only for non-contextualised word embeddings.
     #   Use prepareBERT for BERT (and BERT_Large) and prepareELMo for ELMo
-    useOntology = True  # When run together with runLCRROTALT, the two-step method is used
+    useOntology = False  # When run together with runLCRROTALT, the two-step method is used
     runLCRROTALT = False
 
     runSVM = False

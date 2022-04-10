@@ -6,9 +6,6 @@ import numpy as np
 import nltk
 import time
 import os
-# extra toegevoegd
-from nltk.internals import find_jars_within_path
-from nltk.parse.corenlp import CoreNLPDependencyParser
 
 from nltk.parse.stanford import StanfordDependencyParser
 from nltk import *

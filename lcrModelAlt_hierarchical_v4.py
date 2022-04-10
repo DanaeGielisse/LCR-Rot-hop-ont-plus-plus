@@ -11,7 +11,8 @@ from config import *
 from utils import load_w2v, batch_index, load_inputs_twitter
 import numpy as np
 
-tf.random.set_seed(1)
+
+tf.set_random_seed(1)
 
 def lcr_rot(input_fw, input_bw, sen_len_fw, sen_len_bw, target, sen_len_tr, keep_prob1, keep_prob2, l2, _id='all'):
     print('I am lcr_rot_alt.')
@@ -97,19 +98,19 @@ def main(train_path, test_path, accuracyOnt, test_size, remaining_size, learning
         word_id_mapping, w2v = load_w2v(FLAGS.embedding_path, FLAGS.embedding_dim)
         word_embedding = tf.constant(w2v, name='word_embedding')
 
-        keep_prob1 = tf.placeholder(tf.float32)
-        keep_prob2 = tf.placeholder(tf.float32)
+        keep_prob1 = tf.compat.v1.placeholder(tf.float32)
+        keep_prob2 = tf.compat.v1.placeholder(tf.float32)
 
         with tf.name_scope('inputs'):
-            x = tf.placeholder(tf.int32, [None, FLAGS.max_sentence_len])
-            y = tf.placeholder(tf.float32, [None, FLAGS.n_class])
-            sen_len = tf.placeholder(tf.int32, None)
+            x = tf.compat.v1.placeholder(tf.int32, [None, FLAGS.max_sentence_len])
+            y = tf.compat.v1.placeholder(tf.float32, [None, FLAGS.n_class])
+            sen_len = tf.compat.v1.placeholder(tf.int32, None)
 
-            x_bw = tf.placeholder(tf.int32, [None, FLAGS.max_sentence_len])
-            sen_len_bw = tf.placeholder(tf.int32, [None])
+            x_bw = tf.compat.v1.placeholder(tf.int32, [None, FLAGS.max_sentence_len])
+            sen_len_bw = tf.compat.v1.placeholder(tf.int32, [None])
 
-            target_words = tf.placeholder(tf.int32, [None, FLAGS.max_target_len])
-            tar_len = tf.placeholder(tf.int32, [None])
+            target_words = tf.compat.v1.placeholder(tf.int32, [None, FLAGS.max_target_len])
+            tar_len = tf.compat.v1.placeholder(tf.int32, [None])
 
         inputs_fw = tf.nn.embedding_lookup(word_embedding, x)
         inputs_bw = tf.nn.embedding_lookup(word_embedding, x_bw)
