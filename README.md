@@ -1,7 +1,7 @@
-# HAABSA
+# LCR-Rot-hop-ont++
 Code for A Hybrid Approach for Aspect-Based Sentiment Analysis Using a Lexicalized Domain Ontology and Attentional Neural Models
-
-All software is written in PYTHON3 (https://www.python.org/) and makes use of the TensorFlow framework (https://www.tensorflow.org/).
+Code for LCR-Rot-hop-ont++ using 
+All software is written in PYTHON3 (https://www.python.org/) (python 3.7) and makes use of the TensorFlow framework (https://www.tensorflow.org/).
 
 ## Installation Instructions (Windows):
 ### Dowload required files and add them to data/externalData folder:

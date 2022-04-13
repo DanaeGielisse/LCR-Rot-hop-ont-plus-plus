@@ -1,3 +1,5 @@
+# https://github.com/mtrusca/HAABSA_PLUS_PLUS
+
 #!/usr/bin/env python
 # encoding: utf-8
 
@@ -49,10 +51,10 @@ def load_w2v(w2v_file, embedding_dim, is_skip=False):
     w2v = np.asarray(w2v, dtype=np.float32) # convert w2v to an array
     w2v = np.row_stack((w2v, np.sum(w2v, axis=0) / cnt)) # Stack w2v array and sum of w2v in sequence vertically
     print(np.shape(w2v))
-    word_dict['$t$'] = (cnt + 1) # append new (key,value) pair ($t$,last word number + 1)
+    word_dict['$T$'] = (cnt + 1) # append new (key,value) pair ($t$,last word number + 1)
     w2v -= np.mean(w2v, axis=0) # substract the mean of w2v from all values in w2v
     w2v /= np.std(w2v, axis=0) # devide all the values in w2v through the standard deviation of w2v
-    print(word_dict['$t$'], len(w2v))
+    print(word_dict['$T$'], len(w2v))
     return word_dict, w2v
 
 
