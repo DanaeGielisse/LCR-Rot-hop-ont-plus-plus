@@ -1,4 +1,3 @@
-import torch
 from Synonyms import get_synonyms_list
 from transformers import BertTokenizer, BertModel
 import numpy as np
@@ -7,19 +6,24 @@ import torch
 import argparse
 from config2 import load_hyperparam
 
-soft_positions = [] # lijst met per zin een lijst van softpositions van de ontokenized zinnen
+soft_positions_ontokenized = [] # list with list of softpositions from ontokenized sentences
 new_soft_positions = []
-Tokens_zinnen = []
+tokens_sentences = []
 segments = []
-visible_matrices  = []
+visible_matrices = []
 is_original = []
 new_originals = []
 model = BertModel.from_pretrained('bert-base-uncased',output_hidden_states = True )
 model.eval()
+
+
 def get_sentence_with_synonyms(synonyms, sent):
+    """
+    input: synonyms object, string sentence
+    return: string of sentence with synonyms
+    """
     sentence_list = sent.split(" ")
     copy_sentence = sentence_list.copy()
-
     counter = 0
     cnt = 0
     original = []
@@ -28,17 +32,14 @@ def get_sentence_with_synonyms(synonyms, sent):
     for word in copy_sentence:
         counter += 1
         original.append(1)
-
-        if synonyms ==None:
+        if synonyms ==None: # append no synonyms if synonyms is None
             pass
-        else:
+        else: # append synonyms in sentence
             list_synonyms = synonyms.get_lex_representations_without_himself(word)
             sentence_list[counter:counter] = list_synonyms
             counter += len(list_synonyms)
 
-
         soft_position.append(cnt)
-
 
         if synonyms ==None:
             pass
@@ -53,8 +54,9 @@ def get_sentence_with_synonyms(synonyms, sent):
 
 
         cnt += 1
+
     is_original.append(original)
-    soft_positions.append(soft_position)
+    soft_positions_ontokenized.append(soft_position)
 
 
 
@@ -70,7 +72,7 @@ def divide_words_in_sentence(zin, tokenizer, sent): # hier voor elk woord tokeni
 
             tok = tokenizer.tokenize(sent.split(" ")[i])
 
-            pos = soft_positions[zin][i]
+            pos = soft_positions_ontokenized[zin][i]
             ori = is_original[zin][i]
             for j in range(0,len(tok)):
                 new_original.append(ori)
@@ -82,8 +84,6 @@ def divide_words_in_sentence(zin, tokenizer, sent): # hier voor elk woord tokeni
         count = 0
         for i in range(0,len(new_soft_positions[zin])): # makes softpositions unique for tokens for original word and not unique for tokens of synonyms
 
-
-
             if new_original[i]== 1:
 
                 count = 0
@@ -94,7 +94,7 @@ def divide_words_in_sentence(zin, tokenizer, sent): # hier voor elk woord tokeni
                 new_soft_positions[zin][i] = i - count
                 count+=1
         sentence = ' '.join(list_with_dividing)
-        Tokens_zinnen.append(sentence.split(" "))
+        tokens_sentences.append(sentence.split(" "))
                # hierboven worden de softpositions toegevoegd aan een nieuwe lijst, deze wordt toegevoegd aan de grote lijst voor elke zin
     else:
         list_with_dividing = tokenizer.tokenize(sent)
@@ -108,7 +108,7 @@ def divide_words_in_sentence(zin, tokenizer, sent): # hier voor elk woord tokeni
     return sentence2
 
 def makeSegments():
-    for sentence in Tokens_zinnen: # itereert over alle zinnen, dan over alle tokens en zet segment id's neer en stuurt lijst naar een grotere lijst
+    for sentence in tokens_sentences: # itereert over alle zinnen, dan over alle tokens en zet segment id's neer en stuurt lijst naar een grotere lijst
         seg = []
         s_count = 0
 
@@ -181,7 +181,7 @@ def is_first_occurrence(original, positions,number):
     return True
 
 
-class TestData:
+class Embeddings:
 
     list_of_synonyms = get_synonyms_list()
     print(list_of_synonyms.my_dict)
@@ -245,7 +245,7 @@ def makeEmbeddings():
 
         for j in range(0, len(new_soft_positions[i])):
 
-            tensor[0][j] = token_id_embeddings[tokenizer.convert_tokens_to_ids(Tokens_zinnen[i][j])] \
+            tensor[0][j] = token_id_embeddings[tokenizer.convert_tokens_to_ids(tokens_sentences[i][j])] \
                            + seg_id_embeddings[segments[i][j]] \
                            + pos_id_embeddings[new_soft_positions[i][j]]
 

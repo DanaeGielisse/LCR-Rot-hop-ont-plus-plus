@@ -1,16 +1,13 @@
 # LCR-Rot-hop-ont++
-Code for A Hybrid Approach for Aspect-Based Sentiment Analysis Using a Lexicalized Domain Ontology and Attentional Neural Models
-Code for LCR-Rot-hop-ont++ using 
+Code for LCR-Rot-hop-ont++.
 All software is written in PYTHON3 (https://www.python.org/) (python 3.7) and makes use of the TensorFlow framework (https://www.tensorflow.org/).
-
+This README is based on https://github.com/ofwallaart/HAABSA/blob/master/README.md
 ## Installation Instructions (Windows):
 ### Dowload required files and add them to data/externalData folder:
 1. Download ontology: https://github.com/KSchouten/Heracles/tree/master/src/main/resources/externalData
 2. Download SemEval2015 Datasets: http://alt.qcri.org/semeval2015/task12/index.php?id=data-and-tools
-3. Download SemEval2016 Dataset: http://alt.qcri.org/semeval2016/task5/index.php?id=data-and-tools
-4. Download Glove Embeddings: http://nlp.stanford.edu/data/glove.42B.300d.zip
-5. Download Stanford CoreNLP parser: https://nlp.stanford.edu/software/stanford-parser-full-2018-02-27.zip
-6. Download Stanford CoreNLP Language models: https://nlp.stanford.edu/software/stanford-english-corenlp-2018-02-27-models.jar
+3. Download SemEval2016 Dataset: http://alt.qcri.org/semeval2016/task5/index.php?id=data-and-tools 
+5. Download Stanford CoreNLP parser: https://nlp.stanford.edu/software/stanford-parser-full-2018-02-27.zip 
 
 ### Setup Environment
 1. Install chocolatey (a package manager for Windows): https://chocolatey.org/install

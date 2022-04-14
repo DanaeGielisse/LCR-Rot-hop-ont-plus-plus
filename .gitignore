@@ -322,9 +322,15 @@ $RECYCLE.BIN/
 
 # End of https://www.toptal.com/developers/gitignore/api/python,pycharm,windows,macos
 
-data/programGeneratedData
+data/externalData/stanford-parser-full-2018-02-27
+data/externalData/ontology.owl
+data/externalData/raw_data2015.txt
+data/externalData/raw_data2016.txt
+data
 hyper_results
 results
 cross_results_2015
 cross_results_2016
-data/externalData
+data/programGeneratedData/allEmbeddings.txt
+data/programGeneratedData/embeddings2016.txt
+data/temporaryData
