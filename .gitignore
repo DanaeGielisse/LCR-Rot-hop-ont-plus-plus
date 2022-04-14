@@ -324,13 +324,12 @@ $RECYCLE.BIN/
 
 data/externalData/stanford-parser-full-2018-02-27
 data/externalData/ontology.owl
-data/externalData/raw_data2015.txt
-data/externalData/raw_data2016.txt
-data
 hyper_results
 results
 cross_results_2015
 cross_results_2016
 data/programGeneratedData/allEmbeddings.txt
+data/programGeneratedData/allEmbeddings2.txt
+data/programGeneratedData/allEmbeddings3.txt
 data/programGeneratedData/embeddings2016.txt
 data/temporaryData
