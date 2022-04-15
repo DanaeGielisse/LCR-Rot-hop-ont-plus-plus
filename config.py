@@ -33,7 +33,7 @@ tf.app.flags.DEFINE_string("train_path_ont", "data/programGeneratedData/GloVetra
 tf.app.flags.DEFINE_string("test_path_ont", "data/programGeneratedData/GloVetestdata"+str(FLAGS.year)+".txt", "formatted test data path")
 tf.app.flags.DEFINE_string("train_path", "data/programGeneratedData/" + "train_data"+str(FLAGS.year)+".txt", "train data path")
 tf.app.flags.DEFINE_string("test_path", "data/programGeneratedData/" + "test_data"+str(FLAGS.year)+".txt", "formatted test data path")
-tf.app.flags.DEFINE_string("embedding_path", "data/programGeneratedData/" + "allEmbeddings.txt", "embedding file path")
+tf.app.flags.DEFINE_string("embedding_path", "data/programGeneratedData/" + "allEmbeddings4.txt", "embedding file path")
 tf.app.flags.DEFINE_string("remaining_test_path_ELMo", "data/programGeneratedData/"+str(FLAGS.embedding_dim)+'remainingtestdata'+str(FLAGS.year)+"ELMo.txt", "only for printing")
 tf.app.flags.DEFINE_string("remaining_test_path", "data/programGeneratedData/"+str(FLAGS.embedding_dim)+'remainingtestdata'+str(FLAGS.year)+".txt", "formatted remaining test data path after ontology")
 

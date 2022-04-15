@@ -2,7 +2,7 @@ from owlready import *
 from owlready2 import *
 
 
-class get_synonyms_list:
+class GetSynonyms:
     def __init__(self):
         onto_path.append("data/externalData")  # Path to ontology
         self.onto = get_ontology("ontology.owl")  # Name of ontology
@@ -64,21 +64,4 @@ class get_synonyms_list:
             result_list.remove(word.lower())
 
         return result_list
-
-'''
-ontology = get_synonyms_list()
-
-list_synonyms = ontology.get_lex_representations('Positive')
-print("Normale methode geeft: ")
-print(list_synonyms)
-listsynonyms = ontology.get_lex_representations_without_himself('disappointed')
-print("methode zonder zichzelf geeft: ")
-print(listsynonyms)
-ls = ontology.get_lex_representations_uppercase_accepted('disappointed')
-print("methode waarbij uppercase accepted is geeft: ")
-print(ls)
-los = ontology.get_lex_representations_without_himself_uppercase_accepted('disaPpointed')
-print("methode waarbij uppercase accepted en zichzelf niet meeneemt geeft: ")
-print(los)
-'''
 

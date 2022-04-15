@@ -1,5 +1,5 @@
 # LCR-Rot-hop-ont++
-Code for LCR-Rot-hop-ont++.
+Code for LCR-Rot-hop-ont++. MISSCHIEN NOG KLEINE UITLEG OVER DE METHODE
 All software is written in PYTHON3 (https://www.python.org/) (python 3.7) and makes use of the TensorFlow framework (https://www.tensorflow.org/).
 This README is based on https://github.com/ofwallaart/HAABSA/blob/master/README.md
 ## Installation Instructions (Windows):
@@ -16,7 +16,7 @@ This README is based on https://github.com/ofwallaart/HAABSA/blob/master/README.
 4. Make sure that pip is installed and use pip to install the following packages: setuptools and virtualenv (http://docs.python-guide.org/en/latest/dev/virtualenvs/#virtualenvironments-ref).
 5. Create a virtual environemnt in a desired location by running the following command: `code(virtualenv ENV_NAME)`
 6. Direct to the virtual environment source directory. 
-7. Unzip the HAABSA_software.zip file in the virtual environment directrory. 
+7. Unzip the HAABSA_software.zip file in the virtual environment directory. 
 8. Activate the virtual environment by the following command: 'code(Scripts\activate.bat)`.
 9. Install the required packages from the requirements.txt file by running the following command: `code(pip install -r requirements.txt)`.
 10. Install the required space language pack by running the following command: `code(python -m spacy download en)`
@@ -59,3 +59,5 @@ This code uses ideas and code of the following related papers:
 - Zheng, S. and Xia, R. (2018). Left-center-right separated neural network for aspect-based sentiment analysis with rotatory attention. arXiv preprint arXiv:1802.00892.
 - Schouten, K. and Frasincar, F. (2018). Ontology-driven sentiment analysis of product and service aspects. In Proceedings of the 15th Extended Semantic Web Conference (ESWC 2018). Springer. To appear
 - Liu, Q., Zhang, H., Zeng, Y., Huang, Z., and Wu, Z. (2018). Content attention model for aspect based sentiment analysis. In Proceedings of the 27th International World Wide Web Conference (WWW 2018). ACM Press.
+- Trusca, M.M., Wassenberg, D., Frasincar, F., Dekker, R.: A hybrid approach for aspect-based sentiment analysis using deep contextual word embeddings and hierarchical attention. In: 20th International Conference on Web Engineering (ICWE 2020). LNCS, vol. 12128, pp. 365–380. Springer (2020)
+- Wallaart, O., Frasincar, F.: A hybrid approach for aspect-based sentiment analysis using a lexicalized domain ontology and attentional neural models. In: 16th Extended Semantic Web Conference (ESWC 2019). LNCS, vol. 11503, pp. 363–378. Springer (2019)

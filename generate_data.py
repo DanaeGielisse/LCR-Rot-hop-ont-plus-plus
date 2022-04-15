@@ -1,4 +1,4 @@
-from Synonyms import get_synonyms_list
+from Synonyms import GetSynonyms
 from transformers import BertTokenizer
 from config import *
 
@@ -63,7 +63,7 @@ class TestData:
                 sentence = line_list[i]
                 sentence = sentence.replace('\n', '')
                 if count % 3 == 0 or counter2 % 3 == 0:
-                    synonym = get_synonyms_list()
+                    synonym = GetSynonyms()
                     sentence_with_synonyms = get_sentence_with_synonyms(synonym, sentence)
                     sentence2 = ' '.join(sentence_with_synonyms)
                     sentence_with_synonyms_and_dividing = divide_words_in_sentence(tokenizer, sentence2)
