@@ -322,8 +322,6 @@ $RECYCLE.BIN/
 
 # End of https://www.toptal.com/developers/gitignore/api/python,pycharm,windows,macos
 
-data/externalData/stanford-parser-full-2018-02-27
-data/externalData/ontology.owl
 hyper_results
 results
 cross_results_2015
@@ -335,11 +333,15 @@ prob1.txt
 prob1.txt_bw
 prob1.txt_fw
 prob1.txt_tl
-prob1.txt_tr
+prob1.txt_trc
+testdata2016.txt
 data/programGeneratedData/allEmbeddings.txt
 data/programGeneratedData/allEmbeddings2.txt
 data/programGeneratedData/allEmbeddings3.txt
+data/programGeneratedData/allEmbeddings4.txt
 data/programGeneratedData/embeddings2016.txt
-data/externalData/raw_data2015.txt
-data/externalData/raw_data2016.txt
+data/externalData
 data/temporaryData
+SentenceTree.py
+Test.py
+testEmbeddings4.txt
