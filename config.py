@@ -8,7 +8,7 @@ import sys
 FLAGS = tf.app.flags.FLAGS
 #general variables
 tf.app.flags.DEFINE_string('embedding_type','BERT','can be: glove, word2vec-cbow, word2vec-SG, fasttext, BERT, BERT_Large, ELMo')
-tf.app.flags.DEFINE_integer("year",2016, "year data set [2014]")
+tf.app.flags.DEFINE_integer("year",2015, "year data set [2014]")
 tf.app.flags.DEFINE_integer('embedding_dim', 768, 'dimension of word embedding')
 tf.app.flags.DEFINE_integer('batch_size', 20, 'number of example per batch')
 tf.app.flags.DEFINE_integer('n_hidden', 300, 'number of hidden unit')
@@ -33,7 +33,7 @@ tf.app.flags.DEFINE_string("train_path_ont", "data/programGeneratedData/GloVetra
 tf.app.flags.DEFINE_string("test_path_ont", "data/programGeneratedData/GloVetestdata"+str(FLAGS.year)+".txt", "formatted test data path")
 tf.app.flags.DEFINE_string("train_path", "data/programGeneratedData/" + "train_data"+str(FLAGS.year)+".txt", "train data path")
 tf.app.flags.DEFINE_string("test_path", "data/programGeneratedData/" + "test_data"+str(FLAGS.year)+".txt", "formatted test data path")
-tf.app.flags.DEFINE_string("embedding_path", "data/programGeneratedData/" + "allEmbeddings4.txt", "embedding file path")
+tf.app.flags.DEFINE_string("embedding_path", "data/programGeneratedData/" + "allEmbeddings" + str(FLAGS.year) + ".txt", "embedding file path")
 tf.app.flags.DEFINE_string("remaining_test_path_ELMo", "data/programGeneratedData/"+str(FLAGS.embedding_dim)+'remainingtestdata'+str(FLAGS.year)+"ELMo.txt", "only for printing")
 tf.app.flags.DEFINE_string("remaining_test_path", "data/programGeneratedData/"+str(FLAGS.embedding_dim)+'remainingtestdata'+str(FLAGS.year)+".txt", "formatted remaining test data path after ontology")
 
