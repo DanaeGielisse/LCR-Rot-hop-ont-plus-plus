@@ -1,4 +1,4 @@
-from Synonyms import GetSynonyms
+from embeddings.Synonyms import GetSynonyms
 from transformers import BertTokenizer
 from config import *
 
