@@ -1,7 +1,7 @@
 # LCR-Rot-hop-ont++
-Code for LCR-Rot-hop-ont++. MISSCHIEN NOG KLEINE UITLEG OVER DE METHODE
-All software is written in PYTHON3 (https://www.python.org/) (python 3.7) and makes use of the TensorFlow framework (https://www.tensorflow.org/).
-This README is based on https://github.com/ofwallaart/HAABSA/blob/master/README.md
+Code for LCR-Rot-hop-ont++.
+All software is written in Pyhton 3.7 (https://www.python.org/) and the code uses the TensorFlow framework (https://www.tensorflow.org/).
+
 ## Installation Instructions (Windows):
 ### Dowload required files and add them to data/externalData folder:
 1. Download ontology: https://github.com/KSchouten/Heracles/tree/master/src/main/resources/externalData
@@ -9,55 +9,41 @@ This README is based on https://github.com/ofwallaart/HAABSA/blob/master/README.
 3. Download SemEval2016 Dataset: http://alt.qcri.org/semeval2016/task5/index.php?id=data-and-tools 
 5. Download Stanford CoreNLP parser: https://nlp.stanford.edu/software/stanford-parser-full-2018-02-27.zip 
 
-### Setup Environment
-1. Install chocolatey (a package manager for Windows): https://chocolatey.org/install
-2. Open a command prompt.
-3. Install python3 by running the following command: `code(choco install python)` (http://docs.python-guide.org/en/latest/starting/install3/win/).
-4. Make sure that pip is installed and use pip to install the following packages: setuptools and virtualenv (http://docs.python-guide.org/en/latest/dev/virtualenvs/#virtualenvironments-ref).
-5. Create a virtual environemnt in a desired location by running the following command: `code(virtualenv ENV_NAME)`
-6. Direct to the virtual environment source directory. 
-7. Unzip the HAABSA_software.zip file in the virtual environment directory. 
-8. Activate the virtual environment by the following command: 'code(Scripts\activate.bat)`.
-9. Install the required packages from the requirements.txt file by running the following command: `code(pip install -r requirements.txt)`.
-10. Install the required space language pack by running the following command: `code(python -m spacy download en)`
+### Set-up environment
+- Set-up a virtual environment in Anaconda using Python 3.5.
+- Open your new environment in the command window.
+- Navigate to the file containing all repository code (file_path) by running: cd file_path
+- Install the requirements by running the following command: pip install -r requirements.txt
+- Install English spacy language pack by running the following command: python -m spacy download en
+- You can open and edit the code in any editor, we used the PyCharm IDE: https://www.jetbrains.com/pycharm/
+
+### Choose preferences
+1. Choose your own preferences in the config.py file (for example: year, test data, train data, embeddings)
+2. Set sofpos and use_vm to True in the createEmbeddings.py file, if you would use the special softpositions and the visible matrix, otherwise choose False
+3. Choose in het main.py file witch model you would use, and set this boolean to True (We have only used the hierarchical v4 method)
 
 ### Run Software
-1. Configure one of the three main files to the required configuration (main.py, main_cross.py, main_hyper.py)
-2. Run the program from the command line by the following command: `code(python PROGRAM_TO_RUN.py)` (where PROGRAM_TO_RUN is main/main_cross/main_hyper)
-
-## Software explanation:
-The environment contains the following main files that can be run: main.py, main_cross.py, main_hyper.py
-- main.py: program to run single in-sample and out-of-sample valdition runs. Each method can be activated by setting its corresponding boolean to True e.g. to run the CABASC method set runCABASC = True.
-- main_cross.py: similar to main.py but runs a 10-fold cross validation procedure for each method.
-- main_hyper.py: program that is able to do hyperparameter optimzation for a given space of hyperparamters for each method. To change a method change the objective and space parameters in the run_a_trial() function.
-
-- config.py: contains parameter configurations that can be changed such as: dataset_year, batch_size, iterations.
-
-- dataReader2016.py, loadData.py: files used to read in the raw data and transform them to the required formats to be used by one of the algorithms
-
-- lcrModel.py: Tensorflow implementation for the LCR-Rot algorithm
-- lcrModelAlt.py: Tensorflow implementation for the LCR-Rot-hop algorithm
-- lcrModelInverse.py: Tensorflow implementation for the LCR-Rot-inv algorithm
-- cabascModel.py: Tensorflow implementation for the CABASC algorithm
-- OntologyReasoner.py: PYTHON implementation for the ontology reasoner
-- svmModel.py: PYTHON implementation for a BoW model using a SVM.
-
-- att_layer.py, nn_layer.py, utils.py: programs that declare additional functions used by the machine learning algorithms.
+1. Make sure that all the paths in the code are replaced by your own paths
+2. Run the generate_data.py file, to obtain the train and test data (already added to programGeneratedData in github)
+3. Run the createEmbeddings.py file (in the directory embeddings)
+4. Run the main.py file to obtain the accurancy
 
 ## Directory explanation:
 The following directories are necessary for the virtual environment setup: \__pycache, \Include, \Lib, \Scripts, \tcl, \venv
-- cross_results_2015: Results for a k-fold cross validation process for the SemEval-2015 dataset
-- cross_results_2016: Results for a k-fold cross validation process for the SemEval-2015 dataset
 - data:
-	- externalData: Location for the external data required by the methods
-	- programGeneratedData: Location for preprocessed data that is generated by the programs
-- hyper_results: Contains the stored results for hyperparameter optimzation for each method
-- results: temporary store location for the hyperopt package
+    - externalData: Location for the external data that we have used 
+    - programGeneratedData: Location for preprocessed data that is generated by the programs
+    - temporaryData: Location for temporary data, that is not used for running
+- embeddings:
+    contains files for creating the embeddings
 
 ## Related Work: ##
 This code uses ideas and code of the following related papers:
+- Trusca, M.M., Wassenberg, D., Frasincar, F., Dekker, R.: A hybrid approach for aspect-based sentiment analysis using deep contextual word embeddings and hierarchical attention. In: 20th International Conference on Web Engineering (ICWE 2020). LNCS, vol. 12128, pp. 365–380. Springer (2020)
+- Wallaart, O., Frasincar, F.: A hybrid approach for aspect-based sentiment analysis using a lexicalized domain ontology and attentional neural models. In: 16th Extended Semantic Web Conference (ESWC 2019). LNCS, vol. 11503, pp. 363–378. Springer (2019)
+- Zhao, A., Yu, Y.: Knowledge-enabled BERT for aspect-based sentiment analysis. Knowledge-Based Systems 227, 107220 (2021)
 - Zheng, S. and Xia, R. (2018). Left-center-right separated neural network for aspect-based sentiment analysis with rotatory attention. arXiv preprint arXiv:1802.00892.
 - Schouten, K. and Frasincar, F. (2018). Ontology-driven sentiment analysis of product and service aspects. In Proceedings of the 15th Extended Semantic Web Conference (ESWC 2018). Springer. To appear
 - Liu, Q., Zhang, H., Zeng, Y., Huang, Z., and Wu, Z. (2018). Content attention model for aspect based sentiment analysis. In Proceedings of the 27th International World Wide Web Conference (WWW 2018). ACM Press.
-- Trusca, M.M., Wassenberg, D., Frasincar, F., Dekker, R.: A hybrid approach for aspect-based sentiment analysis using deep contextual word embeddings and hierarchical attention. In: 20th International Conference on Web Engineering (ICWE 2020). LNCS, vol. 12128, pp. 365–380. Springer (2020)
-- Wallaart, O., Frasincar, F.: A hybrid approach for aspect-based sentiment analysis using a lexicalized domain ontology and attentional neural models. In: 16th Extended Semantic Web Conference (ESWC 2019). LNCS, vol. 11503, pp. 363–378. Springer (2019)
+
+This README.md is based on https://github.com/ofwallaart/HAABSA/blob/master/README.md and https://github.com/stefanvanberkum/CD-ABSC/blob/main/README.md
