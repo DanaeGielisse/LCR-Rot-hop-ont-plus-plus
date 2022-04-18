@@ -27,7 +27,7 @@ class TransformerLayer(nn.Module):
         
         self.layer_norm_2 = LayerNorm(args.hidden_size,layer.output.LayerNorm)
 
-    def forward(self, hidden, vm):# Maak van mask visible matrix tensor van seq_length bij seq_length en hidden is seq_length bij emb_size
+    def forward(self, hidden, vm):
         """
         Args:
             hidden: [batch_size x seq_length x emb_size]
@@ -36,7 +36,6 @@ class TransformerLayer(nn.Module):
         Returns:
             output: [batch_size x seq_length x hidden_size]
         """
-        # hieronder de twee sublayers van een encoder layer 
         inter = self.self_attn(hidden, hidden, hidden, vm)
         inter = self.layer_norm_1(inter + hidden)
         output = self.feed_forward(inter)

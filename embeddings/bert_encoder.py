@@ -33,25 +33,12 @@ class BertEncoder(nn.Module):
         seq_length = emb.size(1)
         # Generate mask according to segment indicators.
         # mask: [batch_size x 1 x seq_length x seq_length]
-        '''
-        if vm is None:
-            mask = (seg > 0). \
-                    unsqueeze(1). \
-                    repeat(1, seq_length, 1). \
-                    unsqueeze(1)
-            mask = mask.float()
-            mask = (1.0 - mask) * -10000.0
-        else:
-            mask = vm.unsqueeze(1)
-            mask = mask.float()
-            mask = (1.0 - mask) * -10000.0
-        '''
-        hidden_layers = [] # eerste element is tensor van hidden layers van eerste encoder blok
+        hidden_layers = []
         hidden = emb
         for i in range(self.layers_num):
-            hidden = self.transformer[i](hidden, vm) # volgens mij kan je van mask, vm maken inputs beide tensors.
+            hidden = self.transformer[i](hidden, vm)
             hidden_layers.append(hidden)
-        #code schrijven om laaste vier hidden layers op te slaan om later gemiddelde te nemen,
-        # gemiddelde van laatste 4 layers met unieke tokens teruggeven en dan in een txt file schrijven in de main
-        hidden = (hidden_layers[11] + hidden_layers[10] + hidden_layers[9]+ hidden_layers[8])/4 # neem gemiddelde van laatste 4 layers
+
+        # take the average of the last 4 layers
+        hidden = (hidden_layers[11] + hidden_layers[10] + hidden_layers[9]+ hidden_layers[8])/4
         return hidden

@@ -3,6 +3,7 @@
 import json
 import codecs
 
+
 def load_hyperparam(args):
     with codecs.open(args.config_path, "r", "utf-8") as f:
         param = json.load(f)

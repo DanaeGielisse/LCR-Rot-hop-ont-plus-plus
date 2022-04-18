@@ -63,5 +63,5 @@ class MultiHeadedAttention(nn.Module):
         probs = nn.Softmax(dim=-1)(scores)
         output = unshape(torch.matmul(probs.float(), value.float()))
         output = self.final_linear(output)
-        #check of visible matrix goed wordt toegevoegd en in welk format. tensor object met dimensie 1*zin_lengte*zin_lengte
+
         return output
