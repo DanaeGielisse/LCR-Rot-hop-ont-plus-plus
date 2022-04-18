@@ -10,7 +10,7 @@ All software is written in Pyhton 3.7 (https://www.python.org/) and the code use
 5. Download Stanford CoreNLP parser: https://nlp.stanford.edu/software/stanford-parser-full-2018-02-27.zip 
 
 ### Set-up environment
-- Set-up a virtual environment in Anaconda using Python 3.5.
+- Set-up a virtual environment in Anaconda using Python 3.7.
 - Open your new environment in the command window.
 - Navigate to the file containing all repository code (file_path) by running: cd file_path
 - Install the requirements by running the following command: pip install -r requirements.txt
