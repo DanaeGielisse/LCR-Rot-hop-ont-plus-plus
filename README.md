@@ -20,7 +20,7 @@ All software is written in Pyhton 3.7 (https://www.python.org/) and the code use
 ### Choose preferences
 1. Choose your own preferences in the config.py file (for example: year, test data, train data, embeddings)
 2. Set sofpos and use_vm to True in the createEmbeddings.py file, if you would use the special softpositions and the visible matrix, otherwise choose False
-3. Choose in het main.py file witch model you would use, and set this boolean to True (We have only used the hierarchical v4 method)
+3. Choose in het main.py file which model you would use, and set this boolean to True (We have only used the hierarchical v4 method)
 
 ### Run Software
 1. Make sure that all the paths in the code are replaced by your own paths
