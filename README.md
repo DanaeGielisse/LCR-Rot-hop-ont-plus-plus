@@ -39,11 +39,12 @@ The following directories are necessary for the virtual environment setup: \__py
 
 ## Related Work: ##
 This code uses ideas and code of the following related papers:
+- Liu, W., Zhou, P., Zhao, Z., Wang, Z., Ju, Q., Deng, H., Wang, P.: K-BERT: Enabling language representation with knowledge graph. In: 34th AAAI Conference on Artificial Intelligence (AAAI 2020). vol. 34, pp. 2901–2908. AAAI (2020)
 - Trusca, M.M., Wassenberg, D., Frasincar, F., Dekker, R.: A hybrid approach for aspect-based sentiment analysis using deep contextual word embeddings and hierarchical attention. In: 20th International Conference on Web Engineering (ICWE 2020). LNCS, vol. 12128, pp. 365–380. Springer (2020)
 - Wallaart, O., Frasincar, F.: A hybrid approach for aspect-based sentiment analysis using a lexicalized domain ontology and attentional neural models. In: 16th Extended Semantic Web Conference (ESWC 2019). LNCS, vol. 11503, pp. 363–378. Springer (2019)
+- Yan, X., Jian, F., Sun, B.: SAKG-BERT: Enabling language representation with knowledge graphs for Chinese sentiment analysis. IEEE Access 9, 101695–101701 (2021)
 - Zhao, A., Yu, Y.: Knowledge-enabled BERT for aspect-based sentiment analysis. Knowledge-Based Systems 227, 107220 (2021)
 - Zheng, S. and Xia, R. (2018). Left-center-right separated neural network for aspect-based sentiment analysis with rotatory attention. arXiv preprint arXiv:1802.00892.
-- Schouten, K. and Frasincar, F. (2018). Ontology-driven sentiment analysis of product and service aspects. In Proceedings of the 15th Extended Semantic Web Conference (ESWC 2018). Springer. To appear
-- Liu, Q., Zhang, H., Zeng, Y., Huang, Z., and Wu, Z. (2018). Content attention model for aspect based sentiment analysis. In Proceedings of the 27th International World Wide Web Conference (WWW 2018). ACM Press.
+
 
 This README.md is based on https://github.com/ofwallaart/HAABSA/blob/master/README.md and https://github.com/stefanvanberkum/CD-ABSC/blob/main/README.md
